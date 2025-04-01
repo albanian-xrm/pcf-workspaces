@@ -135,3 +135,15 @@ code C:\repos\AlbanianXrm\PCF-Workspaces
 
     </Project>
     ```
+
+1. Create a new folder at the root of your project named `DependencyControl`
+
+1. Open a terminal to that folder:
+   ```shell
+   cd C:\repos\AlbanianXrm\PCF-Workspaces\DependencyControl
+   ```
+
+1. Create the second PCF Project
+   ```shell
+   pac pcf init -n DependencyControl -ns SampleNamespace -t field -fw react
+   ```
