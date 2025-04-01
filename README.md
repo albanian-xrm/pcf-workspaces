@@ -514,3 +514,12 @@ code C:\repos\AlbanianXrm\PCF-Workspaces
     export { };
 
     ```
+
+1. Create a new file named `featureconfig.json` in the `DependencyControl` project.
+
+1. Write the following content to `DependencyControl/featureconfig.json`:
+    ```json
+    {
+        "pcfResourceDependency": "on"
+    } 
+    ```
