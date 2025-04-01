@@ -32,6 +32,7 @@
     -->
     <resources>
       <code path="index.ts" order="1"/>
+      <dependency type="control" name="dev_SampleNamespace.StubLibrary" order="2" />
       <platform-library name="React" version="16.14.0" />
       <platform-library name="Fluent" version="9.46.2" />
       <!-- UNCOMMENT TO ADD MORE RESOURCES
