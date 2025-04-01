@@ -279,3 +279,16 @@ code C:\repos\AlbanianXrm\PCF-Workspaces
     }
 
     ```
+
+1. We are going to expose our library as an UMD module, and we need to put the variable in the global scope. For this we need a new declaration file (d.ts). Create a new file in the root folder of your project named `StubLibrary/global.d.ts`.
+
+1. Write the following to `StubLibrary/global.d.ts`:
+    ```typescript
+    /* eslint-disable no-var */
+    declare global {
+        var myLib: typeof import('myLib');
+    }
+
+    export { };
+   
+    ```
