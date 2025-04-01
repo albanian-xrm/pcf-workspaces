@@ -1,3 +1,4 @@
+import * as myLib from 'myLib';
 import { IInputs, IOutputs } from "./generated/ManifestTypes";
 
 export class StubLibrary implements ComponentFramework.StandardControl<IInputs, IOutputs> {
@@ -50,3 +51,7 @@ export class StubLibrary implements ComponentFramework.StandardControl<IInputs, 
         // Add code to cleanup control if necessary
     }
 }
+
+(function () {
+    window.myLib = myLib;
+})();
