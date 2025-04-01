@@ -71,3 +71,16 @@ code C:\repos\AlbanianXrm\PCF-Workspaces
     }
 
     ```
+
+1. Update `tsconfig.json` to point to the right parent project. `StubLibrary/tsconfig.json` needs to be updated as follows:
+    ```diff
+    {
+    -    "extends": "./node_modules/pcf-scripts/tsconfig_base.json",
+    +    "extends": "../node_modules/pcf-scripts/tsconfig_base.json",
+        "compilerOptions": {
+    -       "typeRoots": ["node_modules/@types"]
+    +       "typeRoots": ["../node_modules/@types"]
+        }
+    }
+
+    ```
