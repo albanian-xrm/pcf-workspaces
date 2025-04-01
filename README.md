@@ -147,3 +147,43 @@ code C:\repos\AlbanianXrm\PCF-Workspaces
    ```shell
    pac pcf init -n DependencyControl -ns SampleNamespace -t field -fw react
    ```
+
+1. Modify the `package.json` of your PCF project to have a different name and avoid clashes with workspaces. The diff for `DependencyControl/package.json` should look like this: 
+    ```diff
+    {
+    -   "name": "pcf-project",
+    +   "name": "dependency-control",
+        "version": "1.0.0",
+        "description": "Project containing your PowerApps Component Framework (PCF) control.",
+        "scripts": {
+            "build": "pcf-scripts build",
+            "clean": "pcf-scripts clean",
+            "lint": "pcf-scripts lint",
+            "lint:fix": "pcf-scripts lint fix",
+            "rebuild": "pcf-scripts rebuild",
+            "start": "pcf-scripts start",
+            "start:watch": "pcf-scripts start watch",
+            "refreshTypes": "pcf-scripts refreshTypes"
+        },
+        "dependencies": {
+            "react": "16.14.0",
+            "@fluentui/react-components": "9.46.2",
+            "react-dom": "16.14.0"
+        },
+        "devDependencies": {
+            "@eslint/js": "^9.17.0",
+            "@microsoft/eslint-plugin-power-apps": "^0.2.51",
+            "@types/powerapps-component-framework": "^1.3.15",
+            "@types/react": "^16.14.60",
+            "@types/react-dom": "^16.9.24",
+            "eslint-plugin-promise": "^7.1.0",
+            "eslint-plugin-react": "^7.37.2",
+            "globals": "^15.13.0",
+            "pcf-scripts": "^1",
+            "pcf-start": "^1",
+            "react": "^16.14.0",
+            "typescript": "^4.9.5",
+            "typescript-eslint": "^8.18.1"
+        }
+    }
+    ```

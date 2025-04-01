@@ -1,5 +1,5 @@
 {
-  "name": "pcf-project",
+  "name": "dependency-control",
   "version": "1.0.0",
   "description": "Project containing your PowerApps Component Framework (PCF) control.",
   "scripts": {
