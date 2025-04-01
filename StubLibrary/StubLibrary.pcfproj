@@ -11,6 +11,7 @@
     <Name>StubLibrary</Name>
     <ProjectGuid>bd0603c7-b7ee-4011-ba28-1fb7dcb14520</ProjectGuid>
     <OutputPath>$(MSBuildThisFileDirectory)out\controls</OutputPath>
+    <PcfEnableAutoNpmInstall>false</PcfEnableAutoNpmInstall>
   </PropertyGroup>
 
   <PropertyGroup>
