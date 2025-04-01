@@ -292,3 +292,15 @@ code C:\repos\AlbanianXrm\PCF-Workspaces
     export { };
    
     ```
+
+1. Update `StubLibrary/tsconfig.json` to allow UMD modules and javascript code as follows:
+    ```diff
+    {
+        "extends": "../node_modules/pcf-scripts/tsconfig_base.json",
+        "compilerOptions": {
+    +       "allowJs": true,
+    +       "allowUmdGlobalAccess": true,
+    +       "outDir": "dist",
+            "typeRoots": ["../node_modules/@types"]
+        }
+    }
