@@ -9,7 +9,7 @@ export class HelloWorld extends React.Component<IHelloWorldProps> {
   public render(): React.ReactNode {
     return (
       <Label>
-        Hello {this.props.name}!
+        { window.myLib.sayHello() + " from Dependency" || "Hello World" }
       </Label>
     )
   }

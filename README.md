@@ -584,3 +584,25 @@ code C:\repos\AlbanianXrm\PCF-Workspaces
     </manifest>
 
     ```
+
+1. Update the component `DependencyControl/DependencyControl/HelloWorld.tsx` file so that it uses a function from the dependent library. The library is loaded into the `Window` object at runtime.
+    ```diff
+    import * as React from 'react';
+    import { Label } from '@fluentui/react-components';
+
+    export interface IHelloWorldProps {
+        name?: string;
+    }
+
+    export class HelloWorld extends React.Component<IHelloWorldProps> {
+        public render(): React.ReactNode {
+            return (
+            <Label>
+    -            Hello {this.props.name}!
+    +            { window.myLib.sayHello() + " from Dependency" || "Hello World" }
+            </Label>
+            )
+        }
+    }
+
+    ```
