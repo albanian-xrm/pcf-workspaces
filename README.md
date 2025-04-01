@@ -252,3 +252,8 @@ code C:\repos\AlbanianXrm\PCF-Workspaces
     </Project>
 
     ```
+
+1. Open a terminal in the root folder and install the NPM packages with the following comand:
+    ```shell
+    npm i
+    ```
