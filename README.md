@@ -333,3 +333,17 @@ code C:\repos\AlbanianXrm\PCF-Workspaces
 
    ```
    
+1. Create a new file named `featureconfig.json` in the `StubLibrary` project.
+
+1. Write the following content to `StubLibrary/featureconfig.json`:
+
+   ```json
+   {
+     "pcfAllowCustomWebpack": "on",
+     "pcfAllowLibraryResources": "on"
+   }
+   
+   ```
+
+   [Learn more about the featureconfig.json file](https://learn.microsoft.com/en-us/power-apps/developer/component-framework/dependent-libraries#featureconfigjson)
+
