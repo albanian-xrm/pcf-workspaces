@@ -267,3 +267,15 @@ code C:\repos\AlbanianXrm\PCF-Workspaces
     dotnet build -c Release
     cd ..
     ```
+
+## 2. Define the library 
+
+1. You need a new declaration file (d.ts) to describe the objects and functions contained in your library. Create a new file in the root folder of your project named `StubLibrary/myLib.d.ts`.
+
+1. Write the following content to `StubLibrary/myLib.d.ts`:
+    ```typescript
+    declare module 'myLib' {
+        export function sayHello(): string;
+    }
+
+    ```
