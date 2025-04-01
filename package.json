@@ -1,0 +1,7 @@
+{
+    "name": "pcf-worskpaces",
+    "workspaces":[
+        "StubLibrary",
+        "DependencyControl"
+    ]
+}
