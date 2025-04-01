@@ -36,3 +36,38 @@ code C:\repos\AlbanianXrm\PCF-Workspaces
    ```shell
    pac pcf init -n StubLibrary -ns SampleNamespace -t field
    ```
+
+1. Modify the `package.json` of your PCF project to have a different name and avoid clashes with workspaces. The diff for `StubLibrary/package.json` should look like this: 
+    ```diff
+    {
+    -   "name": "pcf-project",
+    +   "name": "stub-library",
+        "version": "1.0.0",
+        "description": "Project containing your PowerApps Component Framework (PCF) control.",
+        "scripts": {
+            "build": "pcf-scripts build",
+            "clean": "pcf-scripts clean",
+            "lint": "pcf-scripts lint",
+            "lint:fix": "pcf-scripts lint fix",
+            "rebuild": "pcf-scripts rebuild",
+            "start": "pcf-scripts start",
+            "start:watch": "pcf-scripts start watch",
+            "refreshTypes": "pcf-scripts refreshTypes"
+        },
+        "dependencies": {
+        },
+        "devDependencies": {
+            "@eslint/js": "^9.17.0",
+            "@microsoft/eslint-plugin-power-apps": "^0.2.51",
+            "@types/node": "^18.19.54",
+            "@types/powerapps-component-framework": "^1.3.15",
+            "eslint-plugin-promise": "^7.1.0",
+            "globals": "15.13.0",
+            "pcf-scripts": "^1",
+            "pcf-start": "^1",
+            "typescript": "^4.9.5",
+            "typescript-eslint": "^8.18.1"
+        }
+    }
+
+    ```
