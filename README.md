@@ -347,3 +347,21 @@ code C:\repos\AlbanianXrm\PCF-Workspaces
 
    [Learn more about the featureconfig.json file](https://learn.microsoft.com/en-us/power-apps/developer/component-framework/dependent-libraries#featureconfigjson)
 
+
+1. Create a new file named `webpack.config.js` in the `StubLibrary` project.
+
+1. Write the following content to `StubLibrary/webpack.config.js`:
+
+   ```typescript
+   /* eslint-disable */
+   "use strict";
+
+   module.exports = {
+     externals: {
+       "myLib": "myLib"
+     },
+   }
+     
+   ```
+
+   [Learn more about the webpack.config.js file](https://learn.microsoft.com/en-us/power-apps/developer/component-framework/dependent-libraries#webpackconfigjs)
