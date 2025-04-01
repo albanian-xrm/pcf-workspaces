@@ -365,3 +365,64 @@ code C:\repos\AlbanianXrm\PCF-Workspaces
    ```
 
    [Learn more about the webpack.config.js file](https://learn.microsoft.com/en-us/power-apps/developer/component-framework/dependent-libraries#webpackconfigjs)
+
+1.  Add a reference to the library under the `resources` in the `StubLibrary` control manifest. Update `StubLibrary/StubLibrary/ControlManifest.Input.xml` as follows:
+    ```diff
+    <?xml version="1.0" encoding="utf-8" ?>
+    <manifest>
+        <control namespace="SampleNamespace" constructor="StubLibrary" version="0.0.1" display-name-key="StubLibrary" description-key="StubLibrary description" control-type="standard" >
+            <!--external-service-usage node declares whether this 3rd party PCF control is using external service or not, if yes, this control will be considered as premium and please also add the external domain it is using.
+            If it is not using any external service, please set the enabled="false" and DO NOT add any domain below. The "enabled" will be false by default.
+            Example1:
+            <external-service-usage enabled="true">
+                <domain>www.Microsoft.com</domain>
+            </external-service-usage>
+            Example2:
+            <external-service-usage enabled="false">
+            </external-service-usage>
+            -->
+            <external-service-usage enabled="false">
+                <!--UNCOMMENT TO ADD EXTERNAL DOMAINS
+                <domain></domain>
+                <domain></domain>
+                -->
+            </external-service-usage>
+            <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
+            <property name="sampleProperty" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type="SingleLine.Text" usage="bound" required="true" />
+            <!--
+            Property node's of-type attribute can be of-type-group attribute.
+            Example:
+            <type-group name="numbers">
+                <type>Whole.None</type>
+                <type>Currency</type>
+                <type>FP</type>
+                <type>Decimal</type>
+            </type-group>
+            <property name="sampleProperty" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type-group="numbers" usage="bound" required="true" />
+            -->
+            <resources>                
+                <library name="myLib" version=">=1" order="1"> 
+                    <packaged_library path="libs/myLib-v_0_0_1.js" version="0.0.1" /> 
+                </library> 
+                <code path="index.ts" order="2"/>
+                <!-- UNCOMMENT TO ADD MORE RESOURCES
+                <css path="css/StubLibrary.css" order="1" />
+                <resx path="strings/StubLibrary.1033.resx" version="1.0.0" />
+                -->
+            </resources>
+            <!-- UNCOMMENT TO ENABLE THE SPECIFIED API
+            <feature-usage>
+                <uses-feature name="Device.captureAudio" required="true" />
+                <uses-feature name="Device.captureImage" required="true" />
+                <uses-feature name="Device.captureVideo" required="true" />
+                <uses-feature name="Device.getBarcodeValue" required="true" />
+                <uses-feature name="Device.getCurrentPosition" required="true" />
+                <uses-feature name="Device.pickFile" required="true" />
+                <uses-feature name="Utility" required="true" />
+                <uses-feature name="WebAPI" required="true" />
+            </feature-usage>
+            -->
+        </control>
+    </manifest>
+
+    ```
