@@ -304,3 +304,32 @@ code C:\repos\AlbanianXrm\PCF-Workspaces
             "typeRoots": ["../node_modules/@types"]
         }
     }
+
+1. Create a new folder to contain your libraries in `StubLibrary/StubLibrary` named `libs`.
+    ```shell
+    cd StubLibrary
+    cd StubLibrary
+    mkdir libs
+    ```
+
+1. Create a JS file `myLib-v_0_0_1.js` in the `libs` folder, path `StubLibrary/StubLibrary/libs/myLib-v_0_0_1.js`.
+
+1. Write the following content to `StubLibrary/StubLibrary/libs/myLib-v_0_0_1.js`:
+   ```javascript
+   // UMD module pattern
+
+   var myLib = (function (exports) {
+      'use strict';
+   
+      function sayHello() {
+         return "Hello from myLib";
+      }
+   
+      exports.sayHello = sayHello;
+   
+      return exports;
+   
+   }(/** @type {import('myLib')}  */({})));
+
+   ```
+   
