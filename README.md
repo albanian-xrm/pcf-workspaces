@@ -257,3 +257,13 @@ code C:\repos\AlbanianXrm\PCF-Workspaces
     ```shell
     npm i
     ```
+
+1. Check that the two components can be built without issues. Execute the following commands in your terminal:
+    ```shell
+    cd StubLibrary
+    dotnet build -c Release
+    cd ..
+    cd DependencyControl
+    dotnet build -c Release
+    cd ..
+    ```
