@@ -11,6 +11,7 @@
     <Name>DependencyControl</Name>
     <ProjectGuid>5e30cb78-8719-4448-a674-82d41cfa6ed3</ProjectGuid>
     <OutputPath>$(MSBuildThisFileDirectory)out\controls</OutputPath>
+    <PcfEnableAutoNpmInstall>false</PcfEnableAutoNpmInstall>
   </PropertyGroup>
 
   <PropertyGroup>

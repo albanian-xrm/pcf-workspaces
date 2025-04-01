@@ -200,3 +200,55 @@ code C:\repos\AlbanianXrm\PCF-Workspaces
     }
 
     ```
+
+1. (Temporary workaround) Update your `DependencyControl.pcfproj` to disable the automatic npm install step as it is not currently compatible with NPM Workspaces. You can add the following property:
+    ```diff
+    <?xml version="1.0" encoding="utf-8"?>
+    <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+        <PropertyGroup>
+            <PowerAppsTargetsPath>$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\PowerApps</PowerAppsTargetsPath>
+        </PropertyGroup>
+
+        <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" />
+        <Import Project="$(PowerAppsTargetsPath)\Microsoft.PowerApps.VisualStudio.Pcf.props" Condition="Exists('$(PowerAppsTargetsPath)\Microsoft.PowerApps.VisualStudio.Pcf.props')" />
+
+        <PropertyGroup>
+            <Name>DependencyControl</Name>
+            <ProjectGuid>5e30cb78-8719-4448-a674-82d41cfa6ed3</ProjectGuid>
+            <OutputPath>$(MSBuildThisFileDirectory)out\controls</OutputPath>
+    +       <PcfEnableAutoNpmInstall>false</PcfEnableAutoNpmInstall>
+        </PropertyGroup>
+
+        <PropertyGroup>
+            <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+            <!--Remove TargetFramework when this is available in 16.1-->
+            <TargetFramework>net462</TargetFramework>
+            <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+        </PropertyGroup>
+
+        <ItemGroup>
+            <PackageReference Include="Microsoft.PowerApps.MSBuild.Pcf" Version="1.*" />
+            <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="All" />
+        </ItemGroup>
+
+        <ItemGroup>
+            <ExcludeDirectories Include="$(MSBuildThisFileDirectory)\.gitignore" />
+            <ExcludeDirectories Include="$(MSBuildThisFileDirectory)\bin\**" />
+            <ExcludeDirectories Include="$(MSBuildThisFileDirectory)\obj\**" />
+            <ExcludeDirectories Include="$(OutputPath)\**" />
+            <ExcludeDirectories Include="$(MSBuildThisFileDirectory)\*.pcfproj" />
+            <ExcludeDirectories Include="$(MSBuildThisFileDirectory)\*.pcfproj.user" />
+            <ExcludeDirectories Include="$(MSBuildThisFileDirectory)\*.sln" />
+            <ExcludeDirectories Include="$(MSBuildThisFileDirectory)\node_modules\**" />
+        </ItemGroup>
+
+        <ItemGroup>
+            <None Include="$(MSBuildThisFileDirectory)\**" Exclude="@(ExcludeDirectories)" />
+        </ItemGroup>
+
+        <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
+        <Import Project="$(PowerAppsTargetsPath)\Microsoft.PowerApps.VisualStudio.Pcf.targets" Condition="Exists('$(PowerAppsTargetsPath)\Microsoft.PowerApps.VisualStudio.Pcf.targets')" />
+
+    </Project>
+
+    ```
