@@ -24,3 +24,15 @@ code C:\repos\AlbanianXrm\PCF-Workspaces
         ]
     }
     ```
+
+1. Create a new folder at the root of your project named `StubLibrary`
+
+1. Open a terminal to that folder:
+   ```shell
+   cd C:\repos\AlbanianXrm\PCF-Workspaces\StubLibrary
+   ```
+
+1. Create the first PCF Project
+   ```shell
+   pac pcf init -n StubLibrary -ns SampleNamespace -t field
+   ```
