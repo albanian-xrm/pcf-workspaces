@@ -494,3 +494,23 @@ code C:\repos\AlbanianXrm\PCF-Workspaces
     pac pcf push
     ```
     `Note!` This will create the custom control using the `dev` prefix, and component can be referenced as `dev_SampleNamespace.StubLibrary`
+
+## 3. Build the Dependent control
+
+1. Since the `dev_SampleNamespace.StubLibrary` is exposed as an UMD module, we need to put the variable in the global scope. For this we need a new declaration file (d.ts). Create a new file in the root folder of your `DependencyControl` project named `global.d.ts`.
+
+1. Write the following content to `DependencyControl/global.d.ts`:
+    ```typescript
+    /* eslint-disable @typescript-eslint/triple-slash-reference */
+    /* eslint-disable no-var */
+
+    /// <reference path="../StubLibrary/myLib.d.ts" />
+    import * as MyLib from 'myLib';
+
+    declare global {
+        var myLib: typeof MyLib;
+    }
+
+    export { };
+
+    ```
